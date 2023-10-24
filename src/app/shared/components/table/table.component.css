@@ -1,0 +1,30 @@
+:host ::ng-deep thead {
+  background: #939ea5;
+  border-bottom: 1.5px solid #dee2e6;
+}
+
+:host ::ng-deep th {
+  border-left: 1.5px solid #dee2e6;
+  padding: 0.5em 1em;
+  text-align: center;
+}
+
+:host ::ng-deep td {
+  padding: 0.5em 1em;
+  text-align: center;
+}
+
+:host ::ng-deep tbody tr:nth-child(even) {
+  background: #dee2e6;
+}
+
+:host ::ng-deep tbody tr:hover {
+  background-color: #cecece;
+}
+
+table {
+  box-shadow: 0 2px 1px -1px #0003, 
+              0 1px 1px #00000024, 
+              0 1px 3px #0000001f;
+  width: 100%;
+}

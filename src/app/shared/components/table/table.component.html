@@ -1,0 +1,30 @@
+<table>
+  <ng-content select="[header]"></ng-content>
+  
+  <tbody *ngIf="!!data; else loading">
+    <ng-container *ngIf="!!data?.length; else empty_data">
+      <ng-container *ngFor="let row of data">
+        <ng-container
+          *ngTemplateOutlet="bodyTemplate.template;
+          context: {$implicit: row}"
+        ></ng-container>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #no_data>
+      <tr>
+        <td [attr.colspan]="columnSpan">
+          <app-no-data></app-no-data>
+        </td>
+      </tr>
+    </ng-template>
+  </tbody>
+
+  <ng-template #loading>
+    <tr>
+      <td [attr.colspan]="columnSpan">
+        <app-spinner></app-spinner>
+      </td>
+    </tr>    
+  </ng-template>
+</table>
