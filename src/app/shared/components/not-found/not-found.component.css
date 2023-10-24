@@ -1,0 +1,8 @@
+:host {
+  display: block;
+  text-align: center;
+}
+
+.no-data {
+  margin-bottom: 1em;
+}
