@@ -1,0 +1,5 @@
+<app-modal title="Add Sender"
+  (cancel)="cancelClick()"
+  (confirm)="confirmClick()">
+  <input type="file" (change)="onFilesSelected($event)" multiple accept=".txt">
+</app-modal>

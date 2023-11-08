@@ -1,9 +1,9 @@
-<table>
+<table class="table table-striped table-hover">
   <ng-content select="[header]"></ng-content>
   
   <tbody *ngIf="!!data; else loading">
-    <ng-container *ngIf="!!data?.length; else empty_data">
-      <ng-container *ngFor="let row of data">
+    <ng-container *ngIf="!!data?.length; else no_data">
+      <ng-container *ngFor="let row of data | paginate: configPage">
         <ng-container
           *ngTemplateOutlet="bodyTemplate.template;
           context: {$implicit: row}"

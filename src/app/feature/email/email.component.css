@@ -1,0 +1,21 @@
+.contain {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5em;
+}
+
+.contain--button {
+  border: 1px solid;
+  background-color: #E8E8E8;
+  border-color: #000;
+  border-radius: 10px;
+  height: 5em;
+  width: 15em;
+  line-height: 2em;
+  padding: 0 1em;
+  font-size: 1.5em;
+}
+
+.contain--button:hover {
+  background: #767e9e;
+}

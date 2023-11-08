@@ -1,0 +1,21 @@
+<div class="backdrop"></div>
+
+<div class="modal-wrapper" (click)="cancelClick($event)">
+	<div class="modal" (click)="$event.stopPropagation()">
+		<p class="modal__title">{{ title }}</p>
+
+		<div class="modal__body">
+			<ng-content></ng-content>
+		</div>
+
+		<div class="modal__footer">
+			<button class="btn btn-outline-primary" (click)="cancelClick($event)">
+				{{ cancelButton }}
+			</button>
+
+			<button class="btn btn-primary" (click)="confirmClick($event)">
+				{{ confirmButton }}
+			</button>
+		</div>
+	</div>
+</div>

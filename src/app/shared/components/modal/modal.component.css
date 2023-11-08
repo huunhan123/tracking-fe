@@ -1,0 +1,63 @@
+:host {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.backdrop {
+  background: #323232;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  opacity: 70%;
+  top: 0;
+  width: 100vw;
+}
+
+.modal-wrapper {
+  display: block;
+  height: 100%;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 3px;
+  display: block;
+  font-size: 1.6rem;
+  height: auto;
+  left: 50%;
+  margin: 10vh 0;
+  min-width: 680px;
+  padding: 2em;
+  position: relative;
+  transform: translateX(-50%);
+  width: var(--common-modal-width, 30vw);
+}
+
+.modal__title {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+.modal__body {
+  margin: 0 0 3em;
+}
+
+.modal__footer {
+  display: flex;
+  gap: 0.5em;
+  justify-content: flex-end;
+}
+
+::ng-deep .modal__options {
+  align-items: baseline;
+  display: flex;
+  margin-bottom: 0.5em;
+}

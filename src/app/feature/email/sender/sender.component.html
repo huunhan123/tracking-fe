@@ -1,0 +1,59 @@
+<app-common pageTitle="Sender">
+  <button common_header_action (click)="openAddSenderModal()">Add</button>
+  <app-search
+		(search)="onSearch($event)"
+		common_header_action
+		#search
+	></app-search>
+  <button 
+    (click)="refresh()" 
+    common_header_action
+  >Refresh</button>
+
+  <app-table
+		[data]="senders"
+		[columnSpan]="3"
+		[configPage]="configPage"
+	>
+		<thead header>
+			<tr>
+				<th>ID</th>
+				<th>Email</th>
+				<th>Password</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+	
+		<ng-template let-sender tableTemplate>
+			<tr>
+				<td>{{ sender.id }}</td>
+				<td>{{ sender.email }}</td>
+				<td>{{ sender.password }}</td>
+				<td class="action">
+					<i type="button" class="bi bi-trash3" (click)="openDeleteSenderModal(sender.id)"></i>
+					<i type="button" class="bi bi-pencil-square"></i>
+				</td>
+			</tr>
+		</ng-template>
+	</app-table>
+
+	<div class="paging">
+    <pagination-controls
+      (pageChange)="pageChanged($event)">
+    </pagination-controls>
+	</div>
+
+	<app-add-modal *ngIf="showAddSenderModal"
+		(cancel)="showAddSenderModal = false"
+		(confirm)="confirmAddSender($event)"
+	>
+	</app-add-modal>
+
+	<app-delete-modal *ngIf="showDeleteSenderModal"
+		[id]="deleteEmailID"
+		(cancel)="showDeleteSenderModal = false"
+		(confirm)="confirmDeleteSender($event)"
+	>
+	</app-delete-modal>
+
+</app-common>

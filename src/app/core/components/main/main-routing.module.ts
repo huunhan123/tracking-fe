@@ -15,6 +15,11 @@ const routes: Routes = [
       },
       
       {
+        path: 'email',
+        loadChildren: () => import('src/app/feature/email/email.module').then(m => m.EmailModule),
+      },
+
+      {
         path: '**',
         loadChildren: () => import('../../../feature/page-not-found/page-not-found.module').then((m) => m.PageNotFoundModule),
       },
