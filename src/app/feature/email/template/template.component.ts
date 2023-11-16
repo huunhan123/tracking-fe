@@ -4,24 +4,24 @@ import { ActivatedRoute } from '@angular/router';
 import { SearchComponent } from 'src/app/shared/components/search/search.component';
 import { ConfigPage, Params } from '../../common.type';
 import { EmailRepository } from '../service/email.repository';
-import { EmailSenderModel, EmailSenderRequestModel } from '../service/email.model';
+import { EmailTemplateModel, EmailTemplateRequestModel } from '../service/email.model';
 
 @Component({
-  selector: 'app-sender',
-  templateUrl: './sender.component.html',
-  styleUrls: ['./sender.component.css']
+  selector: 'app-template',
+  templateUrl: './template.component.html',
+  styleUrls: ['./template.component.css']
 })
-export class SenderComponent implements OnInit {
+export class TemplateComponent implements OnInit {
   @ViewChild('search') private search!: SearchComponent;
 
   params!: Params;
-  senders!: EmailSenderModel[] | undefined;
+  templates!: EmailTemplateModel[] | undefined;
   configPage!: ConfigPage;
 
-  showAddSenderModal = false;
-  showDeleteSenderModal = false;
+  showAddTemplateModal = false;
+  showDeleteTemplateModal = false;
 
-  deleteEmailID!: string;
+  deleteTemplateID!: string;
 
   constructor(
     private route: ActivatedRoute, 
@@ -31,73 +31,73 @@ export class SenderComponent implements OnInit {
   ngOnInit(): void {
     this.initParams();
 
-    this.getEmailSender();
+    this.getEmailTemplate();
   }
 
   onSearch(event: string): void {
     this.params.search = event;
     this.params.page = 1;
     
-    this.getEmailSender();
+    this.getEmailTemplate();
   }
 
   refresh(): void {
     this.initParams();
     this.search.clearSearch();
 
-    this.getEmailSender();
+    this.getEmailTemplate();
   }
 
   pageChanged(event: number): void {
     this.params.page = event;
     this.configPage.currentPage = event;
 
-    this.getEmailSender();
+    this.getEmailTemplate();
   }
 
-  openAddSenderModal(): void {
-    this.showAddSenderModal = true;
+  openAddTemplateModal(): void {
+    this.showAddTemplateModal = true;
   }
 
-  confirmAddSender(emailSenderRequestModel: EmailSenderRequestModel[]): void {
-    this.showAddSenderModal = false;
+  confirmAddTemplate(emailTemplateRequestModel: EmailTemplateRequestModel): void {
+    this.showAddTemplateModal = false;
 
-    this.repository.addEmailSender(emailSenderRequestModel).subscribe(() => {
-      this.getEmailSender();
+    this.repository.addEmailTemplate(emailTemplateRequestModel).subscribe(() => {
+      this.getEmailTemplate();
     });
   }
 
-  openDeleteSenderModal(id: string): void {
-    this.showDeleteSenderModal = true;
+  openDeleteTemplateModal(id: string): void {
+    this.showDeleteTemplateModal = true;
 
-    this.deleteEmailID = id;
+    this.deleteTemplateID = id;
   }
 
-  confirmDeleteSender(id: string): void {
-    this.showDeleteSenderModal = false;
+  confirmDeleteTemplate(id: string): void {
+    this.showDeleteTemplateModal = false;
 
-    this.repository.deleteEmailSender(id).subscribe(() => {
-      this.getEmailSender();
+    this.repository.deleteEmailTemplate(id).subscribe(() => {
+      this.getEmailTemplate();
     });
   }
 
-  private getEmailSender(): void {
-    this.senders = undefined;
+  private getEmailTemplate(): void {
+    this.templates = undefined;
 
-    this.repository.getEmailSender(this.params).subscribe(
+    this.repository.getEmailTemplate(this.params).subscribe(
       { 
         next: data => {
-          this.senders = [];
+          this.templates = [];
 
           data.data?.forEach(element => {
-            this.senders!.push(element);
+            this.templates!.push(element);
           });
 
           this.configPage.totalItems = data.metadata!.totalRows;;
         },
 
         error: () => {
-          this.senders = [];
+          this.templates = [];
         }
       }
     );

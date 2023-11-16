@@ -2,11 +2,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { EmailSenderRequestModel } from '../../service/email.model';
 
 @Component({
-  selector: 'app-add-modal',
+  selector: 'app-add-sender-modal',
   templateUrl: './add-modal.component.html',
   styleUrls: ['./add-modal.component.css']
 })
-export class AddModalComponent {
+export class AddSenderModalComponent {
   @Output() cancel = new EventEmitter<void>();
   @Output() confirm = new EventEmitter<EmailSenderRequestModel[]>();
 

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { EmailComponent } from './email.component';
 import { SenderComponent } from './sender/sender.component';
+import { TemplateComponent } from './template/template.component';
 
 const routers: Routes = [
   {
@@ -15,6 +16,10 @@ const routers: Routes = [
       {
         path: 'sender',
         component: SenderComponent,
+      },
+      {
+        path: 'template',
+        component: TemplateComponent,
       },
     ],
   }

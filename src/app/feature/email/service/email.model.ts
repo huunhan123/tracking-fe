@@ -1,4 +1,4 @@
-import { EmailSenderDto } from './email.dto';
+import { EmailSenderDto, EmailTemplateDto } from './email.dto';
 
 export class EmailSenderModel {
   id: string;
@@ -15,4 +15,21 @@ export class EmailSenderModel {
 export type EmailSenderRequestModel = {
   email: string,
   password: string,
+}
+
+export class EmailTemplateModel {
+  id: string;
+  name: string;
+  url: string;
+
+  constructor(dto: EmailTemplateDto) {
+    this.id = dto.id;
+    this.name = dto.name;
+    this.url = dto.url;
+  }
+}
+
+export type EmailTemplateRequestModel = {
+  name: string,
+  content: string,
 }
