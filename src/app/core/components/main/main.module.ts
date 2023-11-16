@@ -4,6 +4,7 @@ import { FooterModule } from './footer/footer.module';
 import { HeaderModule } from './header/header.module';
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
+import { MenuModule } from './menu/menu.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { MainRoutingModule } from './main-routing.module';
   imports: [
     HeaderModule,
     FooterModule,
+    MenuModule,
     MainRoutingModule,
   ],
   exports: [
