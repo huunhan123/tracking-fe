@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { ParamsModel, ResponseModel } from '../../common.type';
-import { EmailSenderDto, EmailTemplateDto } from './email.dto';
-import { EmailSenderRequestModel, EmailTemplateRequestModel } from './email.model';
+import { EmailDestinationDto, EmailSenderDto, EmailTemplateDto } from './email.dto';
+import { EmailDestinationRequestModel, EmailSenderRequestModel, EmailTemplateRequestModel } from './email.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +36,17 @@ export class EmailDatasource {
 
   deleteEmailTemplate(id: string): Observable<void> {
     return this.http.delete<void>(`${this.prefix}/template/delete/${id}`);
+  }
+
+  getEmailDestination(params: ParamsModel): Observable<ResponseModel<EmailDestinationDto[]>> {
+    return this.http.get<ResponseModel<EmailDestinationDto[]>>(`${this.prefix}/destination`, {params: params.toHttpParams()});
+  }
+
+  addEmailDestination(configure: EmailDestinationRequestModel[]): Observable<void> {
+    return this.http.post<void>(`${this.prefix}/destination/add`, configure);
+  }
+
+  deleteEmailDestination(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.prefix}/destination/delete/${id}`);
   }
 }

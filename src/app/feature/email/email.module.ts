@@ -13,6 +13,9 @@ import { DeleteSenderModalComponent } from './sender/delete-modal/delete-modal.c
 import { TemplateComponent } from './template/template.component';
 import { AddTemplateModalComponent } from './template/add-modal/add-modal.component';
 import { DeleteTemplateModalComponent } from './template/delete-modal/delete-modal.component';
+import { DestinationComponent } from './destination/destination.component';
+import { DeleteDestinationModalComponent } from './destination/delete-modal/delete-modal.component';
+import { AddDestinationModalComponent } from './destination/add-modal/add-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { DeleteTemplateModalComponent } from './template/delete-modal/delete-mod
     TemplateComponent,
     AddTemplateModalComponent,
     DeleteTemplateModalComponent,
+    DestinationComponent,
+    AddDestinationModalComponent,
+    DeleteDestinationModalComponent,
   ],
   imports: [
     CommonModule,

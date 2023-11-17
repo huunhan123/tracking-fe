@@ -9,3 +9,9 @@ export type EmailTemplateDto = {
   name: string,
   url: string,
 }
+
+export type EmailDestinationDto = {
+  id: string,
+  name: string,
+  email: string,
+}
