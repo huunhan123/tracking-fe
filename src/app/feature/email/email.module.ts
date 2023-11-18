@@ -16,6 +16,7 @@ import { DeleteTemplateModalComponent } from './template/delete-modal/delete-mod
 import { DestinationComponent } from './destination/destination.component';
 import { DeleteDestinationModalComponent } from './destination/delete-modal/delete-modal.component';
 import { AddDestinationModalComponent } from './destination/add-modal/add-modal.component';
+import { MailingComponent } from './mailing/mailing.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AddDestinationModalComponent } from './destination/add-modal/add-modal.
     DestinationComponent,
     AddDestinationModalComponent,
     DeleteDestinationModalComponent,
+    MailingComponent,
   ],
   imports: [
     CommonModule,

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { ParamsModel, ResponseModel } from '../../common.type';
 import { EmailDestinationDto, EmailSenderDto, EmailTemplateDto } from './email.dto';
-import { EmailDestinationRequestModel, EmailSenderRequestModel, EmailTemplateRequestModel } from './email.model';
+import { EmailDestinationRequestModel, EmailSenderRequestModel, EmailTemplateRequestModel, SendEmailRequestModel } from './email.model';
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +48,9 @@ export class EmailDatasource {
 
   deleteEmailDestination(id: string): Observable<void> {
     return this.http.delete<void>(`${this.prefix}/destination/delete/${id}`);
+  }
+
+  sendEmail(configure: SendEmailRequestModel): Observable<void> {
+    return this.http.post<void>(`${this.prefix}/send-email`, configure);
   }
 }

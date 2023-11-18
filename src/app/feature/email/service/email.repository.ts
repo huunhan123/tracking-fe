@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { EmailDatasource } from './email.datasource';
 import { Params, ParamsModel, ResponseModel } from '../../common.type';
 import { Observable, map } from 'rxjs';
-import { EmailDestinationModel, EmailDestinationRequestModel, EmailSenderModel, EmailSenderRequestModel, EmailTemplateModel, EmailTemplateRequestModel } from './email.model';
+import { EmailDestinationModel, EmailDestinationRequestModel, EmailSenderModel, EmailSenderRequestModel, EmailTemplateModel, EmailTemplateRequestModel, SendEmailRequestModel } from './email.model';
 
 @Injectable({
   providedIn: 'root'
@@ -66,5 +66,9 @@ export class EmailRepository {
 
   deleteEmailDestination(id: string): Observable<void> {
     return this.datasource.deleteEmailDestination(id);
+  }
+
+  sendEmail(configure: SendEmailRequestModel): Observable<void> {
+    return this.datasource.sendEmail(configure);
   }
 }

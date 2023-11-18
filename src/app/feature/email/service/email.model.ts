@@ -50,3 +50,8 @@ export type EmailDestinationRequestModel = {
   name: string,
   email: string,
 }
+
+export type SendEmailRequestModel = {
+  templateName?: string,
+  subject?: string,
+}

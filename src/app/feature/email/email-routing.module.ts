@@ -5,6 +5,7 @@ import { EmailComponent } from './email.component';
 import { SenderComponent } from './sender/sender.component';
 import { TemplateComponent } from './template/template.component';
 import { DestinationComponent } from './destination/destination.component';
+import { MailingComponent } from './mailing/mailing.component';
 
 const routers: Routes = [
   {
@@ -25,6 +26,10 @@ const routers: Routes = [
       {
         path: 'destination',
         component: DestinationComponent,
+      },
+      {
+        path: 'mailing',
+        component: MailingComponent,
       },
     ],
   }
