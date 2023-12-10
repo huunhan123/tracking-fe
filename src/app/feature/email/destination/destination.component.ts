@@ -115,6 +115,7 @@ export class DestinationComponent implements OnInit {
     this.configPage = {
       currentPage: this.params.page,
       itemsPerPage: this.params.rpp,
+      totalItems: 0,
     }
   }
 }

@@ -7,7 +7,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HostHttpInterceptor } from './core/services/http/host.http-interceptor';
-import { EmailModule } from './feature/email/email.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,6 @@ import { EmailModule } from './feature/email/email.module';
     HttpClientModule,
     NgbModule,
     AppRoutingModule,
-    EmailModule,
   ],
   providers: [
     {

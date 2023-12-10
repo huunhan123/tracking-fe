@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+
 import { EmailDestinationRequestModel } from '../../service/email.model';
 
 @Component({
@@ -9,34 +11,42 @@ import { EmailDestinationRequestModel } from '../../service/email.model';
 export class AddDestinationModalComponent {
   @Output() cancel = new EventEmitter<void>();
   @Output() confirm = new EventEmitter<EmailDestinationRequestModel[]>();
-
-  destinations!: EmailDestinationRequestModel[];
   
-  constructor() { }
+  selectedFile!: File;
+
+  modalForm = this.formBuilder.nonNullable.group({
+    fileInput: ['', Validators.required],
+    tag: ['', Validators.required],
+  });
+  
+  constructor(private formBuilder: FormBuilder) { }
 
   cancelClick(): void {
     this.cancel.emit();
   }
 
   confirmClick(): void {
-    this.confirm.emit(this.destinations);
-  }
+    if (this.modalForm.valid) {
+      const tag = this.modalForm.get('tag')!.value;
 
-  onFilesSelected(event: any) {
-    const selectedFile = event.target.files[0];
-
-    if (selectedFile) {
-      const fileReader = new FileReader();
-
-      fileReader.onload = (e) => {
-        this.destinations = this.parseDestinationsFromFile(fileReader.result as string);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const sendersModel = this.parseDestinationsFromFile(reader.result as string, tag);
+        this.confirm.emit(sendersModel);
       };
 
-      fileReader.readAsText(selectedFile);
+      reader.readAsText(this.selectedFile);
+    }  
+  }
+
+  onFileSelected(event: any): void {
+    const fileInput = event.target;
+    if (fileInput.files.length > 0) {
+      this.selectedFile = fileInput.files[0];
     }
   }
 
-  private parseDestinationsFromFile(data: string): EmailDestinationRequestModel[] {
+  private parseDestinationsFromFile(data: string, tag: string): EmailDestinationRequestModel[] {
     const rawData = data.split('\n');
 
     const emailDestinations = rawData.map(el => {
@@ -45,6 +55,7 @@ export class AddDestinationModalComponent {
       const destination: EmailDestinationRequestModel = {
         name,
         email,
+        tag, 
       };
 
       return destination;

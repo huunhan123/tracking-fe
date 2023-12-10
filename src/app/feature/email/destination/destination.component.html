@@ -12,7 +12,7 @@
 
   <app-table
 		[data]="destinations"
-		[columnSpan]="4"
+		[columnSpan]="5"
 		[configPage]="configPage"
 	>
 		<thead header>
@@ -20,6 +20,7 @@
 				<th>ID</th>
 				<th>Name</th>
 				<th>Email</th>
+				<th>Tag</th>
 				<th>Action</th>
 			</tr>
 		</thead>
@@ -29,6 +30,7 @@
 				<td>{{ sender.id }}</td>
 				<td>{{ sender.name }}</td>
 				<td>{{ sender.email }}</td>
+				<td>{{ sender.tag }}</td>
 				<td class="action">
 					<i type="button" class="bi bi-trash3" (click)="openDeleteDestinationModal(sender.id)"></i>
 					<!-- <i type="button" class="bi bi-pencil-square"></i> -->

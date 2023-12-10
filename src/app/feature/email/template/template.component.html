@@ -12,7 +12,7 @@
 
   <app-table
 		[data]="templates"
-		[columnSpan]="4"
+		[columnSpan]="5"
 		[configPage]="configPage"
 	>
 		<thead header>
@@ -20,17 +20,19 @@
 				<th>ID</th>
 				<th>Name</th>
 				<th>URL</th>
+				<th>Tag</th>
 				<th>Action</th>
 			</tr>
 		</thead>
 	
-		<ng-template let-sender tableTemplate>
+		<ng-template let-template tableTemplate>
 			<tr>
-				<td>{{ sender.id }}</td>
-				<td>{{ sender.name }}</td>
-				<td>{{ sender.url }}</td>
+				<td>{{ template.id }}</td>
+				<td>{{ template.name }}</td>
+				<td>{{ template.url }}</td>
+				<td>{{ template.tag }}</td>
 				<td class="action">
-					<i type="button" class="bi bi-trash3" (click)="openDeleteTemplateModal(sender.id)"></i>
+					<i type="button" class="bi bi-trash3" (click)="openDeleteTemplateModal(template.id)"></i>
 					<!-- <i type="button" class="bi bi-pencil-square"></i> -->
 				</td>
 			</tr>

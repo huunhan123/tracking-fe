@@ -16,6 +16,7 @@ export class AddTemplateModalComponent {
   template: EmailTemplateRequestModel = {
     name: '',
     content: '',
+    tag: '',
   };
 
   selectedFile!: File;
@@ -23,6 +24,7 @@ export class AddTemplateModalComponent {
   modalForm = this.formBuilder.nonNullable.group({
     name: ['', Validators.required],
     fileInput: ['', Validators.required],
+    tag: ['', Validators.required],
   });
   
   constructor(private formBuilder: FormBuilder) { }
@@ -33,11 +35,10 @@ export class AddTemplateModalComponent {
 
   confirmClick(): void {
     this.modalForm.markAllAsTouched();
-    let content: string = '';
-    let name: string = '';
 
     if (this.modalForm.valid) {
       this.template.name = this.modalForm.get('name')!.value;
+      this.template.tag = this.modalForm.get('tag')!.value;
 
       const reader = new FileReader();
       reader.onload = (e) => {

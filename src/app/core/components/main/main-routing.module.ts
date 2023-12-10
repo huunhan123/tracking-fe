@@ -20,6 +20,11 @@ const routes: Routes = [
       },
 
       {
+        path: 'report',
+        loadChildren: () => import('src/app/feature/report/report.module').then(m => m.ReportModule),
+      },
+
+      {
         path: '**',
         loadChildren: () => import('../../../feature/page-not-found/page-not-found.module').then((m) => m.PageNotFoundModule),
       },

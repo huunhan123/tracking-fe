@@ -1,0 +1,46 @@
+<app-common pageTitle="Report">
+  <app-search
+		(search)="onSearch($event)"
+		common_header_action
+		#search
+	></app-search>
+  <button 
+    (click)="refresh()" 
+    common_header_action
+  >Refresh</button>
+
+  <app-table
+		[data]="reports"
+		[columnSpan]="5"
+		[configPage]="configPage"
+	>
+		<thead header>
+			<tr>
+				<!-- <th>ID</th> -->
+				<th>User</th>
+				<th>Product</th>
+				<th>Sender</th>
+				<th>Template</th>
+				<th>Send At</th>
+			</tr>
+		</thead>
+	
+		<ng-template let-report tableTemplate>
+			<tr>
+				<!-- <td>{{ report.id }}</td> -->
+				<td>{{ report.user }}</td>
+				<td>{{ report.product }}</td>
+				<td>{{ report.sender }}</td>
+				<td>{{ report.template }}</td>
+				<td>{{ report.sendAt }}</td>
+			</tr>
+		</ng-template>
+	</app-table>
+
+	<div class="paging">
+    <pagination-controls
+      (pageChange)="pageChanged($event)">
+    </pagination-controls>
+	</div>
+
+</app-common>

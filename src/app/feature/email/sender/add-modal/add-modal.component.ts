@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+
 import { EmailSenderRequestModel } from '../../service/email.model';
 
 @Component({
@@ -10,33 +12,41 @@ export class AddSenderModalComponent {
   @Output() cancel = new EventEmitter<void>();
   @Output() confirm = new EventEmitter<EmailSenderRequestModel[]>();
 
-  senders!: EmailSenderRequestModel[];
+  selectedFile!: File;
+
+  modalForm = this.formBuilder.nonNullable.group({
+    fileInput: ['', Validators.required],
+    tag: ['', Validators.required],
+  });
   
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   cancelClick(): void {
     this.cancel.emit();
   }
 
   confirmClick(): void {
-    this.confirm.emit(this.senders);
-  }
+    if (this.modalForm.valid) {
+      const tag = this.modalForm.get('tag')!.value;
 
-  onFilesSelected(event: any) {
-    const selectedFile = event.target.files[0];
-
-    if (selectedFile) {
-      const fileReader = new FileReader();
-
-      fileReader.onload = (e) => {
-        this.senders = this.parseSendersFromFile(fileReader.result as string);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const sendersModel = this.parseSendersFromFile(reader.result as string, tag);
+        this.confirm.emit(sendersModel);
       };
 
-      fileReader.readAsText(selectedFile);
+      reader.readAsText(this.selectedFile);
+    }  
+  }
+
+  onFileSelected(event: any): void {
+    const fileInput = event.target;
+    if (fileInput.files.length > 0) {
+      this.selectedFile = fileInput.files[0];
     }
   }
 
-  private parseSendersFromFile(data: string): EmailSenderRequestModel[] {
+  private parseSendersFromFile(data: string, tag: string): EmailSenderRequestModel[] {
     const rawData = data.split('\n');
 
     const emailSenders = rawData.map(el => {
@@ -45,6 +55,7 @@ export class AddSenderModalComponent {
       const sender: EmailSenderRequestModel = {
         email,
         password,
+        tag: tag,
       };
 
       return sender;

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from, mergeMap } from 'rxjs';
 
 import { ParamsModel, ResponseModel } from '../../common.type';
 import { EmailDestinationDto, EmailSenderDto, EmailTemplateDto } from './email.dto';
@@ -11,6 +11,7 @@ import { EmailDestinationRequestModel, EmailSenderRequestModel, EmailTemplateReq
 })
 export class EmailDatasource {
   private prefix = '/api/email';
+  private readonly chunkSize = 1024 * 10;
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +20,15 @@ export class EmailDatasource {
   }
 
   addEmailSender(configure: EmailSenderRequestModel[]): Observable<void> {
-    return this.http.post<void>(`${this.prefix}/sender/add`, configure);
+    const chunks = [];
+    for (let i = 0; i < configure.length; i += this.chunkSize) {
+      const chunk = configure.slice(i, i + this.chunkSize);
+      chunks.push(chunk);
+    }
+
+    return from(chunks).pipe(
+      mergeMap(chunk => this.http.post<void>(`${this.prefix}/sender/add`, chunk))
+    );
   }
 
   deleteEmailSender(id: string): Observable<void> {
@@ -43,7 +52,16 @@ export class EmailDatasource {
   }
 
   addEmailDestination(configure: EmailDestinationRequestModel[]): Observable<void> {
-    return this.http.post<void>(`${this.prefix}/destination/add`, configure);
+    const chunks = [];
+    for (let i = 0; i < configure.length; i += this.chunkSize) {
+      const chunk = configure.slice(i, i + this.chunkSize);
+      chunks.push(chunk);
+    }
+    console.log(chunks);
+    
+    return from(chunks).pipe(
+      mergeMap(chunk => this.http.post<void>(`${this.prefix}/destination/add`, chunk))
+    );
   }
 
   deleteEmailDestination(id: string): Observable<void> {
