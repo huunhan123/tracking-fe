@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { EmailSenderRequestModel } from '../../service/email.model';
+import { EmailSenderRequestModel } from '../../service/sender/sender.model';
 
 @Component({
   selector: 'app-add-sender-modal',

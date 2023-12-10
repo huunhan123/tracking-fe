@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { SearchComponent } from 'src/app/shared/components/search/search.component';
 import { ConfigPage, Params } from '../../common.type';
-import { EmailRepository } from '../service/email.repository';
-import { EmailTemplateModel, EmailTemplateRequestModel } from '../service/email.model';
+import { EmailTemplateModel, EmailTemplateRequestModel } from '../service/template/template.model';
+import { EmailTemplateRepository } from '../service/template/template.repository';
 
 @Component({
   selector: 'app-template',
@@ -25,7 +25,7 @@ export class TemplateComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute, 
-    private repository: EmailRepository,
+    private repository: EmailTemplateRepository,
   ) {}
 
   ngOnInit(): void {

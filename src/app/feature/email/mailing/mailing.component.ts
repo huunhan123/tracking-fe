@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 
-import { EmailRepository } from '../service/email.repository';
-import { EmailTemplateModel, SendEmailRequestModel } from '../service/email.model';
 import { Params } from '../../common.type';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { EmailTemplateModel } from '../service/template/template.model';
+import { EmailRepository } from '../service/email.repository';
+import { SendEmailRequestModel } from '../service/email.model';
 
 @Component({
   selector: 'app-mailing',
@@ -28,7 +29,6 @@ export class MailingComponent implements OnInit {
 
   ngOnInit(): void {
     this.initParams();
-    this.getEmailTemplate();
   }
 
   sendMail() {
@@ -45,26 +45,6 @@ export class MailingComponent implements OnInit {
       });
     }
     this.modalForm.reset();
-  }
-
-  private getEmailTemplate(): void {
-    this.templates = undefined;
-
-    this.repository.getEmailTemplate(this.params).subscribe(
-      { 
-        next: data => {
-          this.templates = [];
-
-          data.data?.forEach(element => {
-            this.templates!.push(element);
-          });
-        },
-
-        error: () => {
-          this.templates = [];
-        }
-      }
-    );
   }
 
   private initParams(): void {

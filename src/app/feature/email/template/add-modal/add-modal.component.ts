@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { cloneDeep } from 'lodash';
 
-import { EmailTemplateRequestModel } from '../../service/email.model';
+import { EmailTemplateRequestModel } from '../../service/template/template.model';
 
 @Component({
   selector: 'app-add-template-modal',

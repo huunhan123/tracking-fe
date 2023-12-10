@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { EmailDestinationRequestModel } from '../../service/email.model';
+import { EmailDestinationRequestModel } from '../../service/destination/destination.model';
 
 @Component({
   selector: 'app-add-destination-modal',

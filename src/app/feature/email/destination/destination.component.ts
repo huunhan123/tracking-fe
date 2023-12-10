@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { SearchComponent } from 'src/app/shared/components/search/search.component';
 import { ConfigPage, Params } from '../../common.type';
-import { EmailRepository } from '../service/email.repository';
-import { EmailDestinationModel, EmailDestinationRequestModel } from '../service/email.model';
+import { EmailDestinationModel, EmailDestinationRequestModel } from '../service/destination/destination.model';
+import { EmailDestinationRepository } from '../service/destination/destination.repository';
 
 @Component({
   selector: 'app-destination',
@@ -25,7 +25,7 @@ export class DestinationComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute, 
-    private repository: EmailRepository,
+    private repository: EmailDestinationRepository,
   ) {}
 
   ngOnInit(): void {

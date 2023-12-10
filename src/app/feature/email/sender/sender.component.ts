@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { SearchComponent } from 'src/app/shared/components/search/search.component';
 import { ConfigPage, Params } from '../../common.type';
-import { EmailRepository } from '../service/email.repository';
-import { EmailSenderModel, EmailSenderRequestModel } from '../service/email.model';
+import { EmailSenderRepository } from '../service/sender/sender.repository';
+import { EmailSenderModel, EmailSenderRequestModel } from '../service/sender/sender.model';
 
 @Component({
   selector: 'app-sender',
@@ -25,7 +25,7 @@ export class SenderComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute, 
-    private repository: EmailRepository,
+    private repository: EmailSenderRepository,
   ) {}
 
   ngOnInit(): void {
