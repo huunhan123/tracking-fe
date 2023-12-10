@@ -20,6 +20,9 @@ import { MailingComponent } from './mailing/mailing.component';
 import { LinkComponent } from './link/link.component';
 import { AddLinkModalComponent } from './link/add-modal/add-modal.component';
 import { DeleteLinkModalComponent } from './link/delete-modal/delete-modal.component';
+import { SubjectComponent } from './subject/sucject.component';
+import { AddSubjectModalComponent } from './subject/add-modal/add-modal.component';
+import { DeleteSubjectModalComponent } from './subject/delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { DeleteLinkModalComponent } from './link/delete-modal/delete-modal.compo
     LinkComponent,
     AddLinkModalComponent,
     DeleteLinkModalComponent,
+    SubjectComponent,
+    AddSubjectModalComponent,
+    DeleteSubjectModalComponent,
   ],
   imports: [
     CommonModule,

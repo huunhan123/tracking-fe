@@ -7,6 +7,7 @@ import { TemplateComponent } from './template/template.component';
 import { DestinationComponent } from './destination/destination.component';
 import { MailingComponent } from './mailing/mailing.component';
 import { LinkComponent } from './link/link.component';
+import { SubjectComponent } from './subject/sucject.component';
 
 const routers: Routes = [
   {
@@ -31,6 +32,10 @@ const routers: Routes = [
       {
         path: 'link',
         component: LinkComponent,
+      },
+      {
+        path: 'subject',
+        component: SubjectComponent,
       },
       {
         path: 'mailing',
