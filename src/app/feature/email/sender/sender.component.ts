@@ -93,7 +93,7 @@ export class SenderComponent implements OnInit {
             this.senders!.push(element);
           });
 
-          this.configPage.totalItems = data.metadata!.totalRows;;
+          this.configPage.totalItems = data.metadata!.totalRows;
         },
 
         error: () => {

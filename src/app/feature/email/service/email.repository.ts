@@ -11,7 +11,7 @@ import { SendEmailRequestModel } from './email.model';
 export class EmailRepository {
   constructor(private datasource: EmailDatasource) { }
 
-  sendEmail(configure: SendEmailRequestModel): Observable<void> {
-    return this.datasource.sendEmail(configure);
+  sendEmail(): Observable<void> {
+    return this.datasource.sendEmail();
   }
 }

@@ -32,19 +32,20 @@ export class MailingComponent implements OnInit {
   }
 
   sendMail() {
-    this.modalForm.markAllAsTouched();
+    this.repository.sendEmail().subscribe();
+    // this.modalForm.markAllAsTouched();
 
-    if (this.modalForm.valid) {
-      const sendMailConfigure: SendEmailRequestModel = {
-        templateName: this.modalForm.value['template'],
-        subject: this.modalForm.value['subject'],
-      } 
+    // if (this.modalForm.valid) {
+    //   const sendMailConfigure: SendEmailRequestModel = {
+    //     templateName: this.modalForm.value['template'],
+    //     subject: this.modalForm.value['subject'],
+    //   } 
      
-      this.repository.sendEmail(sendMailConfigure).subscribe(() => {
-        alert(`Send mail with template ${this.modalForm.value['template']} successfully`);
-      });
-    }
-    this.modalForm.reset();
+    //   this.repository.sendEmail(sendMailConfigure).subscribe(() => {
+    //     alert(`Send mail with template ${this.modalForm.value['template']} successfully`);
+    //   });
+    // }
+    // this.modalForm.reset();
   }
 
   private initParams(): void {

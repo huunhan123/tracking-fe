@@ -13,7 +13,7 @@ export class EmailDatasource {
 
   constructor(private http: HttpClient) { }
 
-  sendEmail(configure: SendEmailRequestModel): Observable<void> {
-    return this.http.post<void>(`${this.prefix}/send-email`, configure);
+  sendEmail(): Observable<void> {
+    return this.http.post<void>(`${this.prefix}/send-email`, {});
   }
 }

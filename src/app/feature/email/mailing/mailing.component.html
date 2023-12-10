@@ -1,5 +1,5 @@
 <app-common pageTitle="Mailing">
-  <ng-container [formGroup]="modalForm">
+  <!-- <ng-container [formGroup]="modalForm">
     <div>
       <label for="selectTemplate">Select a Template:</label>
       <select id="selectTemplate" [formControl]="modalForm.controls['template']">
@@ -12,5 +12,7 @@
       <input id="subject" type="text" [formControl]="modalForm.controls['subject']">
     </div>
     <button class="btn btn-primary" (click)="sendMail()">Send</button>
-  </ng-container>
+  </ng-container> -->
+
+  <button class="btn btn-primary" (click)="sendMail()">Send</button>
 </app-common>
