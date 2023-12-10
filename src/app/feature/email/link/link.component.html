@@ -1,0 +1,59 @@
+<app-common pageTitle="Link">
+  <button common_header_action (click)="openAddLinkModal()">Add</button>
+  <app-search
+		(search)="onSearch($event)"
+		common_header_action
+		#search
+	></app-search>
+  <button 
+    (click)="refresh()" 
+    common_header_action
+  >Refresh</button>
+
+  <app-table
+		[data]="links"
+		[columnSpan]="4"
+		[configPage]="configPage"
+	>
+		<thead header>
+			<tr>
+				<th>ID</th>
+				<th>Link</th>
+				<th>Tag</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+	
+		<ng-template let-link tableTemplate>
+			<tr>
+				<td>{{ link.id }}</td>
+				<td>{{ link.link }}</td>
+				<td>{{ link.tag }}</td>
+				<td class="action">
+					<i type="button" class="bi bi-trash3" (click)="openDeleteLinkModal(link.id)"></i>
+					<i type="button" class="bi bi-pencil-square"></i>
+				</td>
+			</tr>
+		</ng-template>
+	</app-table>
+
+	<div class="paging">
+    <pagination-controls
+      (pageChange)="pageChanged($event)">
+    </pagination-controls>
+	</div>
+
+	<app-add-link-modal *ngIf="showAddLinkModal"
+		(cancel)="showAddLinkModal = false"
+		(confirm)="confirmAddLink($event)"
+	>
+	</app-add-link-modal>
+
+	<app-delete-link-modal *ngIf="showDeleteLinkModal"
+		[id]="deleteEmailID"
+		(cancel)="showDeleteLinkModal = false"
+		(confirm)="confirmDeleteLink($event)"
+	>
+	</app-delete-link-modal>
+
+</app-common>

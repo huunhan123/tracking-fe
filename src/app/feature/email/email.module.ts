@@ -17,6 +17,9 @@ import { DestinationComponent } from './destination/destination.component';
 import { DeleteDestinationModalComponent } from './destination/delete-modal/delete-modal.component';
 import { AddDestinationModalComponent } from './destination/add-modal/add-modal.component';
 import { MailingComponent } from './mailing/mailing.component';
+import { LinkComponent } from './link/link.component';
+import { AddLinkModalComponent } from './link/add-modal/add-modal.component';
+import { DeleteLinkModalComponent } from './link/delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { MailingComponent } from './mailing/mailing.component';
     AddDestinationModalComponent,
     DeleteDestinationModalComponent,
     MailingComponent,
+    LinkComponent,
+    AddLinkModalComponent,
+    DeleteLinkModalComponent,
   ],
   imports: [
     CommonModule,

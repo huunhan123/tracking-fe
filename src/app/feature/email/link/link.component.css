@@ -1,0 +1,19 @@
+:host {
+  width: 100%;
+}
+
+.paging {
+  font-size: 1.3em;
+  text-align: right;
+  background-color: #fff;
+  border-radius: 0 0 5px 5px;
+  overflow: hidden;
+  padding: 0 1em 0 1em;
+  margin-top: 1.5em;
+}
+
+.action {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
