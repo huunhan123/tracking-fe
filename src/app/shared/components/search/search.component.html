@@ -1,0 +1,19 @@
+<div class="d-flex">
+  <div class="search">
+    <i class="bi bi-search search__icon"></i>
+    <input
+      class="form-control me-1 shadow-none search__input" 
+      type="text" 
+      [placeholder]="placeholder || 'Enter your keyword'"
+      (keyup)="updateTrimmedValue()"
+      #input 
+    />
+  </div>
+  
+  <button 
+    [disabled]="!trimmedValue"
+    (click)="clickButton()"
+  > 
+    Search 
+  </button>
+</div>

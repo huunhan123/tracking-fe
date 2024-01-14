@@ -1,0 +1,61 @@
+<app-common pageTitle="Subject">
+  <button common_header_action (click)="openAddSubjectModal()">Add</button>
+  <app-search
+		(search)="onSearch($event)"
+		common_header_action
+		#search
+	></app-search>
+  <button 
+    (click)="refresh()" 
+    common_header_action
+  >Refresh</button>
+
+  <app-table
+		[data]="subjects"
+		[columnSpan]="5"
+		[configPage]="configPage"
+	>
+		<thead header>
+			<tr>
+				<th>ID</th>
+				<th>Subject</th>
+				<th>Greeting</th>
+				<th>Tag</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+	
+		<ng-template let-subject tableTemplate>
+			<tr>
+				<td>{{ subject.id }}</td>
+				<td>{{ subject.subject }}</td>
+				<td>{{ subject.greeting ? 'Greeting' : 'Not Greeting' }}</td>
+				<td>{{ subject.tag }}</td>
+				<td class="action">
+					<i type="button" class="bi bi-trash3" (click)="openDeleteSubjectModal(subject.id)"></i>
+					<i type="button" class="bi bi-pencil-square"></i>
+				</td>
+			</tr>
+		</ng-template>
+	</app-table>
+
+	<div class="paging">
+    <pagination-controls
+      (pageChange)="pageChanged($event)">
+    </pagination-controls>
+	</div>
+
+	<app-add-subject-modal *ngIf="showAddSubjectModal"
+		(cancel)="showAddSubjectModal = false"
+		(confirm)="confirmAddSubject($event)"
+	>
+	</app-add-subject-modal>
+
+	<app-delete-subject-modal *ngIf="showDeleteSubjectModal"
+		[id]="deleteEmailID"
+		(cancel)="showDeleteSubjectModal = false"
+		(confirm)="confirmDeleteSubject($event)"
+	>
+	</app-delete-subject-modal>
+
+</app-common>

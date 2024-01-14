@@ -1,0 +1,16 @@
+.common_header {
+  font-size: 1em;
+  margin-bottom: 2em;
+}
+
+.common_header__title {
+  font-size: 2em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.common_header__action {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}

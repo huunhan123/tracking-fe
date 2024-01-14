@@ -1,0 +1,61 @@
+<app-common pageTitle="Destination">
+  <button common_header_action (click)="openAddDestinationModal()">Add</button>
+  <app-search
+		(search)="onSearch($event)"
+		common_header_action
+		#search
+	></app-search>
+  <button 
+    (click)="refresh()" 
+    common_header_action
+  >Refresh</button>
+
+  <app-table
+		[data]="destinations"
+		[columnSpan]="5"
+		[configPage]="configPage"
+	>
+		<thead header>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Tag</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+	
+		<ng-template let-sender tableTemplate>
+			<tr>
+				<td>{{ sender.id }}</td>
+				<td>{{ sender.name }}</td>
+				<td>{{ sender.email }}</td>
+				<td>{{ sender.tag }}</td>
+				<td class="action">
+					<i type="button" class="bi bi-trash3" (click)="openDeleteDestinationModal(sender.id)"></i>
+					<!-- <i type="button" class="bi bi-pencil-square"></i> -->
+				</td>
+			</tr>
+		</ng-template>
+	</app-table>
+
+	<div class="paging">
+    <pagination-controls
+      (pageChange)="pageChanged($event)">
+    </pagination-controls>
+	</div>
+
+	<app-add-destination-modal *ngIf="showAddDestinationModal"
+		(cancel)="showAddDestinationModal = false"
+		(confirm)="confirmAddDestination($event)"
+	>
+	</app-add-destination-modal>
+
+	<app-delete-destination-modal *ngIf="showDeleteDestinationModal"
+		[id]="deleteEmailID"
+		(cancel)="showDeleteDestinationModal = false"
+		(confirm)="confirmDeleteDestination($event)"
+	>
+	</app-delete-destination-modal>
+
+</app-common>

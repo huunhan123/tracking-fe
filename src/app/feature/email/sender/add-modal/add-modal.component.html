@@ -1,0 +1,15 @@
+<app-modal title="Add Sender"
+  (cancel)="cancelClick()"
+  (confirm)="confirmClick()">
+  <ng-container [formGroup]="modalForm">
+    <div>
+      <label for="name">Tag:</label>
+      <input type="text" id="tag" formControlName="tag">
+    </div>
+
+    <div>
+      <label for="fileInput">File Input:</label>
+      <input type="file" id="fileInput" (change)="onFileSelected($event)" formControlName="fileInput">
+    </div>
+  </ng-container>
+</app-modal>

@@ -2,3 +2,14 @@
 html {
   font-size: 13px;
 }
+
+button {
+  background-color: blue;
+  border: 1px solid;
+  border-radius: var(--button-border-radius,3px);
+  line-height: 2em;
+  padding: 0 1em;
+  width: var(--button-width, auto);
+  height: var(--button-height, auto);
+  font-size: var(--button-size, auto);
+}

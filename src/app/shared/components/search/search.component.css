@@ -1,0 +1,24 @@
+:host {
+  font-size: 1.6rem;
+}
+
+.search {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.search__icon {
+  left: 0.5em;
+  position: absolute;
+}
+
+.search__input {
+  font-size: 1em;
+  text-indent: 1.4em;
+}
+
+.search__button {
+  font-size: 1em;
+}
