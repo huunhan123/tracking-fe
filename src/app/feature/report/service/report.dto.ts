@@ -5,4 +5,5 @@ export type ReportDto = {
   sender: string,
   template: string,
   sendAt: string,
+  opens: number[],
 }

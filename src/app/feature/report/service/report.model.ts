@@ -7,6 +7,7 @@ export class ReportModel {
   sender: string;
   template: string;
   sendAt: Date;
+  opens: Date[];
 
   constructor(dto: ReportDto) {
     this.id = dto.id;
@@ -15,5 +16,6 @@ export class ReportModel {
     this.sender = dto.sender;
     this.template = dto.template;
     this.sendAt = new Date(Number(dto.sendAt));
+    this.opens = dto.opens.map(element => new Date(element));
   }
 }

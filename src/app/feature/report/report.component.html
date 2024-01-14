@@ -11,7 +11,7 @@
 
   <app-table
 		[data]="reports"
-		[columnSpan]="5"
+		[columnSpan]="6"
 		[configPage]="configPage"
 	>
 		<thead header>
@@ -22,17 +22,21 @@
 				<th>Sender</th>
 				<th>Template</th>
 				<th>Send At</th>
+				<th>Opens</th>
+				<th>Open Count</th>
 			</tr>
 		</thead>
 	
 		<ng-template let-report tableTemplate>
 			<tr>
-				<!-- <td>{{ report.id }}</td> -->
+				<td>{{ report.id }}</td>
 				<td>{{ report.user }}</td>
 				<td>{{ report.product }}</td>
 				<td>{{ report.sender }}</td>
 				<td>{{ report.template }}</td>
 				<td>{{ report.sendAt }}</td>
+				<td>{{ report.opens.length ? report.opens : 'None' }}</td>
+				<td>{{ report.opens.length }}</td>
 			</tr>
 		</ng-template>
 	</app-table>
