@@ -12,12 +12,13 @@
 
   <app-table
 		[data]="links"
-		[columnSpan]="4"
+		[columnSpan]="5"
 		[configPage]="configPage"
 	>
 		<thead header>
 			<tr>
 				<th>ID</th>
+				<th>Info</th>
 				<th>Link</th>
 				<th>Tag</th>
 				<th>Action</th>
@@ -27,6 +28,7 @@
 		<ng-template let-link tableTemplate>
 			<tr>
 				<td>{{ link.id }}</td>
+				<td>{{ link.info }}</td>
 				<td>{{ link.link }}</td>
 				<td>{{ link.tag }}</td>
 				<td class="action">

@@ -50,12 +50,14 @@ export class AddLinkModalComponent {
     const rawData = data.split('\n');
 
     const emailLinks = rawData.map(el => {
-      const link: EmailLinkRequestModel = {
-        link: el,
+      const [info, link] = el.split('|');
+      const result: EmailLinkRequestModel = {
+        link,
+        info,
         tag: tag,
       };
 
-      return link;
+      return result;
     });
 
     return emailLinks;
